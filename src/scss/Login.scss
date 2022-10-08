@@ -1,0 +1,22 @@
+@import "/src/scss/variables"; 
+
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    background-color: $background;
+
+    &-cover {
+        width: 30%;
+        height: 30%;
+    }
+
+    &-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+}

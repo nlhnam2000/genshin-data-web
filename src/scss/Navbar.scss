@@ -1,0 +1,31 @@
+@import '/src/scss/variables'; 
+@import "./mixin"; 
+
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: $background;
+
+    .navbar-logo {
+        color: white; 
+
+    }
+
+    .navbar-button {
+        background-color: inherit;
+        padding: 15px;
+        border-radius: 10px;
+        border: none;
+        color: gray;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+            color: white;
+        }
+    }
+}

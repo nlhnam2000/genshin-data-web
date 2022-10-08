@@ -16,6 +16,16 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "baseUrl": "src",
+    "paths": {
+      "scss/*": ["scss/*"], 
+      "components/*": ["components/*"], 
+      "screens/*": ["screens/*"], 
+      "assets/*": ["assets/*"], 
+      "routes/*": ["routes/*"], 
+      "api/*": ["api/*"], 
+      "utils/*": ["utils/*"]
+    },
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
