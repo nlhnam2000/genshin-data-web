@@ -22,6 +22,7 @@
             align-items: center;
             justify-content: flex-start;
             padding: 10px 0;
+            gap: 15px;
 
             img {
                 width: 40px; 
@@ -165,6 +166,14 @@
         div {
             flex-basis: 25%;
         }
+
+    }
+
+    .constellation-icon {
+        width: 40px;
+        height: 40px;
+        margin-top: -15px;
+        margin-bottom: 15px;
     }
 }
 
@@ -176,4 +185,104 @@
     border: none;
     background: none; 
     cursor: pointer;
+}
+
+.ascension-items {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-left: 15px;
+
+    &-label {
+        width: 120px;
+        @include maxWidth($mobile) {
+            width: 100px;
+            font-size: smaller;
+        }
+    }
+
+    &:nth-child(even) {
+        background-color: $background;
+    }
+
+    &-list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        list-style: none;
+        gap: 20px;
+
+        &-detail {
+            display: flex;
+            align-items: center; 
+            max-width: 250px;
+            gap: 10px;
+
+            @include maxWidth($mobile) {
+                max-width: 100px;
+                background-color: red;
+                gap: 0;
+            }
+
+            &-name {
+
+                @include maxWidth($mobile) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.item-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .item-image {
+        width: 85px; 
+        height: 85px;
+
+        @include maxWidth($mobile) {
+            width: 50px; 
+            height: 50px;
+        }
+    }
+
+    .item-count {
+        position: absolute;
+        bottom: 0;
+        background-color: $contentBackgroundBlured;
+        color: white;
+        width: 100%;
+        text-align: center;
+
+        @include maxWidth($mobile) {
+            font-size: 10px;
+        }
+    }
+}
+
+.gold-card {
+    background-image: linear-gradient(0deg, rgb(100,75,80), rgb(111,89,84), rgb(140,99,88), rgb(189,146,90), rgb(216,168,98));
+}
+
+.purple-card {
+    background-image: linear-gradient(0deg, rgb(82,97,129), rgb(96,89,132), rgb(114,98,138), rgb(159,127,182), rgb(171,134,193));
+}
+
+.green-card {
+    background-image: linear-gradient(0deg, rgb(82,86,115), rgb(82,90,119), rgb(84,106,134), rgb(89,130,154), rgb(94,154,175));
+}
+
+.blue-card {
+    background-image: linear-gradient(0deg, rgb(77,89,93), rgb(78,92,96), rgb(81,112,105), rgb(95,134,111), rgb(105,145,115));
+}
+
+.gray-card {
+    background-image: linear-gradient(0deg, rgb(80,88,98), rgb(87,92,103), rgb(100,106,118), rgb(122,123,143), rgb(130,140,150));
 }

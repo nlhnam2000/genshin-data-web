@@ -4,7 +4,6 @@
 
 .mainlayout {
     width: 100%;
-    background-color: red;
 }
 
 // content wrapper
@@ -68,7 +67,7 @@
         background-image: url('../assets/images/Cover/Mondstadt.webp');
         background-repeat: no-repeat;
         background-position: top;
-        background-size: 100% 50%;
+        background-size: 100% 300px;
         position: absolute;
         top: 0px;
         right: 0px;
@@ -84,7 +83,41 @@
         background-image: url('../assets/images/Cover/Liyue.avif');
         background-repeat: no-repeat;
         background-position: top;
-        background-size: 100% 50%;
+        background-size: 100% 300px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0.25;
+        filter: blur(5px);
+    }
+}
+
+.inazuma {
+    &:before {
+        content: "";
+        background-image: url('../assets/images/Cover/Inazuma.jpeg');
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: 100% 300px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0.25;
+        filter: blur(5px);
+    }
+}
+
+.sumeru {
+    &:before {
+        content: "";
+        background-image: url('../assets/images/Cover/Sumeru.webp');
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: 100% 300px;
         position: absolute;
         top: 0px;
         right: 0px;
@@ -97,7 +130,6 @@
 
 // Box 
 .box-wrapper {
-    // width: calc(100% / 3);
     flex: 1;
     background-color: $background;
     border-radius: 10px;
@@ -127,6 +159,5 @@
 }
 
 .toggle {
-    transform: translateY(-30%);
-    
+    transform: translateY(-20%);
 }

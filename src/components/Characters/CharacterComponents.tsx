@@ -11,6 +11,7 @@ import {
 
 import "scss/characters.scss";
 import Box from "components/Box/Box";
+import Ascend from "components/Ascension/Ascend";
 import { TalentDecoding } from "utils/utils";
 
 interface Props {
@@ -24,6 +25,19 @@ interface ConstellationProps {
 interface TalentDetailProps {
   data: GenshinDB.CombatTalentDetail;
 }
+
+interface AscensionProps {
+  data: CharacterCost | undefined;
+}
+
+type CharacterCost = {
+  ascend1: GenshinDB.Items[];
+  ascend2: GenshinDB.Items[];
+  ascend3: GenshinDB.Items[];
+  ascend4: GenshinDB.Items[];
+  ascend5: GenshinDB.Items[];
+  ascend6: GenshinDB.Items[];
+};
 
 export const CharacterSkill: React.FC<Props> = ({ data }) => {
   const [toggleSkill, setToggleSkill] = useState({
@@ -44,6 +58,7 @@ export const CharacterSkill: React.FC<Props> = ({ data }) => {
             }`}
           >
             <h3 className="text-character-title">{data.combat1.name}</h3>
+            <p>{data.combat1.description}</p>
             <FontAwesomeIcon
               icon={toggleSkill.skill1 ? faChevronUp : faChevronDown}
               className="toggle-icon"
@@ -62,6 +77,7 @@ export const CharacterSkill: React.FC<Props> = ({ data }) => {
             }`}
           >
             <h3 className="text-character-title">{data.combat2.name}</h3>
+            <p>{data.combat2.description}</p>
             <FontAwesomeIcon
               icon={toggleSkill.skill2 ? faChevronUp : faChevronDown}
               className="toggle-icon"
@@ -80,6 +96,7 @@ export const CharacterSkill: React.FC<Props> = ({ data }) => {
             }`}
           >
             <h3 className="text-character-title">{data.combat3.name}</h3>
+            <p>{data.combat3.description}</p>
             <FontAwesomeIcon
               icon={toggleSkill.skill3 ? faChevronUp : faChevronDown}
               className="toggle-icon"
@@ -134,28 +151,34 @@ export const CharacterConstellation: React.FC<ConstellationProps> = ({
           <div className="character-constellation-list">
             <Box>
               <h3 className="text-character-title">{data.c1.name}</h3>
+              <img src={data.images.c1} alt="" className="constellation-icon" />
               <ReactMarkdown>{data.c1.effect}</ReactMarkdown>
             </Box>
             {/* passive 2 */}
             <Box>
               <h3 className="text-character-title">{data.c2.name}</h3>
+              <img src={data.images.c2} alt="" className="constellation-icon" />
               <ReactMarkdown>{data.c2.effect}</ReactMarkdown>
             </Box>
             {/* passive 3 */}
             <Box>
               <h3 className="text-character-title">{data.c3.name}</h3>
+              <img src={data.images.c3} alt="" className="constellation-icon" />
               <ReactMarkdown>{data.c3.effect}</ReactMarkdown>
             </Box>
             <Box>
               <h3 className="text-character-title">{data.c4.name}</h3>
+              <img src={data.images.c4} alt="" className="constellation-icon" />
               <ReactMarkdown>{data.c4.effect}</ReactMarkdown>
             </Box>
             <Box>
               <h3 className="text-character-title">{data.c5.name}</h3>
+              <img src={data.images.c5} alt="" className="constellation-icon" />
               <ReactMarkdown>{data.c5.effect}</ReactMarkdown>
             </Box>
             <Box>
               <h3 className="text-character-title">{data.c6.name}</h3>
+              <img src={data.images.c6} alt="" className="constellation-icon" />
               <ReactMarkdown>{data.c6.effect}</ReactMarkdown>
             </Box>
           </div>
@@ -206,5 +229,23 @@ export const CharacterSkillDetail: React.FC<TalentDetailProps> = ({ data }) => {
         ))}
       </ul>
     </div>
+  );
+};
+
+export const CharacterAscension: React.FC<AscensionProps> = ({ data }) => {
+  return (
+    <>
+      {data && (
+        <div className="character-skill">
+          <h3 className="title">Material Ascension</h3>
+          <Ascend label="1st Ascension" data={data?.ascend1} />
+          <Ascend label="2nd Ascension" data={data?.ascend2} />
+          <Ascend label="3rd Ascension" data={data?.ascend3} />
+          <Ascend label="4th Ascension" data={data?.ascend4} />
+          <Ascend label="5th Ascension" data={data?.ascend5} />
+          <Ascend label="6th Ascension" data={data?.ascend6} />
+        </div>
+      )}
+    </>
   );
 };

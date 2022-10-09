@@ -10,6 +10,7 @@ import {
   CharacterSkill,
   CharacterPassive,
   CharacterConstellation,
+  CharacterAscension,
 } from "components/Characters/CharacterComponents";
 import {
   GetCharacterData,
@@ -89,6 +90,7 @@ const DetailCharacter: React.FC = () => {
           <CharacterSkill data={characterTalent} />
           <CharacterPassive data={characterTalent} />
           <CharacterConstellation data={characterConstellation} />
+          <CharacterAscension data={characterData?.costs} />
         </>
       )}
     </ContentWrapper>
