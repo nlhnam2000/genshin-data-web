@@ -1,4 +1,5 @@
 import GenshinDB, {CombatTalentDetail} from 'genshin-db'
+import {Cost} from 'interfaces/costs'
 
 type CombatTalentDetailByLevel = {
     label: string,
@@ -55,15 +56,46 @@ export const TalentDecoding = (attributes: CombatTalentDetail, level: number): C
 }
 
 const attributeFormated = (value: number, formatter: string) => {
-    if (formatter === 'F') {
-      return value.toFixed(2);
-    } else if (formatter === 'F1P') {
-      return (value * 100).toFixed(1) + '%';
-    } else if (formatter === 'P') {
-      return (value * 100).toFixed(2) + '%';
-    } else if (formatter === 'F1') {
-      return value.toFixed(1);
-    } else if (formatter === 'I') {
-      return value;
+  if (formatter === 'F') {
+    return value.toFixed(2);
+  } else if (formatter === 'F1P') {
+    return (value * 100).toFixed(1) + '%';
+  } else if (formatter === 'P') {
+    return (value * 100).toFixed(2) + '%';
+  } else if (formatter === 'F1') {
+    return value.toFixed(1);
+  } else if (formatter === 'I') {
+    return value;
+  }
+};
+
+export const CalculateTotalAscension = (data: Cost) => {
+  const ascension = ['ascend1', 'ascend2', 'ascend3', 'ascend4', 'ascend5', 'ascend6']
+  type ObjectKey = keyof typeof data
+  let result: GenshinDB.Items[] = []
+
+  ascension.forEach(ascend => {
+    const ascensionDetail = data[ascend as ObjectKey]
+    for (let i = 0; i < ascensionDetail.length; i++) {
+      const index = indexFromObject(result, ascensionDetail[i]); 
+      if (index !== -1) {
+        result[index] = {...result[index], count: result[index].count + ascensionDetail[i].count}
+      }
+      else {
+        result.push(ascensionDetail[i])
+      }
     }
-  };
+  })
+  
+  return result; 
+}
+
+const indexFromObject = (parent: GenshinDB.Items[], child: GenshinDB.Items): number => {
+  for (let i = 0; i < parent.length; i++) {
+    if (parent[i].name === child.name) {
+      return i;   
+    }
+  }
+
+  return -1; 
+}

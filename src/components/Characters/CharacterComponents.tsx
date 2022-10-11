@@ -11,8 +11,9 @@ import {
 
 import "scss/characters.scss";
 import Box from "components/Box/Box";
-import Ascend from "components/Ascension/Ascend";
+import Ascend, { TotalAscend } from "components/Ascension/Ascend";
 import { TalentDecoding } from "utils/utils";
+import { Cost } from "interfaces/costs";
 
 interface Props {
   data: GenshinDB.Talent;
@@ -244,6 +245,7 @@ export const CharacterAscension: React.FC<AscensionProps> = ({ data }) => {
           <Ascend label="4th Ascension" data={data?.ascend4} />
           <Ascend label="5th Ascension" data={data?.ascend5} />
           <Ascend label="6th Ascension" data={data?.ascend6} />
+          <TotalAscend data={data} />
         </div>
       )}
     </>

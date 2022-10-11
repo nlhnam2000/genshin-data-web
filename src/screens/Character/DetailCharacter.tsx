@@ -80,7 +80,9 @@ const DetailCharacter: React.FC = () => {
                 style={{ width: 30, height: 30 }}
               />
             </div>
-            <h3 className="text-character">{characterData.description}</h3>
+            <h3 className="text-character" style={{ textAlign: "left" }}>
+              {characterData.description}
+            </h3>
           </ContentWrapper.HeaderContent>
         </ContentWrapper.Header>
       )}

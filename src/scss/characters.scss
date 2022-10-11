@@ -213,6 +213,11 @@
         align-items: center;
         list-style: none;
         gap: 20px;
+        column-gap: 30px;
+
+        &.total {
+            flex-wrap: wrap;
+        }
 
         &-detail {
             display: flex;

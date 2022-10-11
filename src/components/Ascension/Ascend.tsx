@@ -2,6 +2,8 @@ import React from "react";
 import GenshinDB from "genshin-db";
 
 import "scss/characters.scss";
+import { Cost } from "interfaces/costs";
+import { CalculateTotalAscension } from "utils/utils";
 
 interface Props {
   data: GenshinDB.Items[];
@@ -11,6 +13,10 @@ interface Props {
 interface ItemProps {
   name: string;
   count: number;
+}
+
+interface CostProps {
+  data: Cost;
 }
 
 const getRarityBackground = (
@@ -32,15 +38,31 @@ const getRarityBackground = (
   }
 };
 
-const Ascend: React.FC<Props> = ({ data, label }) => {
+export const Ascend: React.FC<Props> = ({ data, label }) => {
   return (
     <div className="ascension-items">
       <p className="ascension-items-label">{label}</p>
       <ul className="ascension-items-list">
         {data.map((item) => (
-          <li className="ascension-items-list-detail">
+          <li key={item.name} className="ascension-items-list-detail">
             <ItemAvatar name={item.name} count={item.count} />
             <p className="ascension-items-list-detail-name">{item.name}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export const TotalAscend: React.FC<CostProps> = ({ data }) => {
+  const total = CalculateTotalAscension(data);
+  return (
+    <div className="ascension-items">
+      <p className="ascension-items-label">Total</p>
+      <ul className="ascension-items-list total">
+        {total.map((item) => (
+          <li key={item.name} className="ascension-items-list-detail">
+            <ItemAvatar name={item.name} count={item.count} />
           </li>
         ))}
       </ul>

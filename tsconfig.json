@@ -24,7 +24,8 @@
       "assets/*": ["assets/*"], 
       "routes/*": ["routes/*"], 
       "api/*": ["api/*"], 
-      "utils/*": ["utils/*"]
+      "utils/*": ["utils/*"], 
+      "interfaces/*": ["interfaces/*"]
     },
     "isolatedModules": true,
     "noEmit": true,
